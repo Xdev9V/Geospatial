@@ -1,30 +1,48 @@
 define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquery"], function(mapboxgl, jQuery) {
-    //Add Variables
     "use strict";
+    var map = '',
+        bounds = '',
+        geojsonFeature = {};
 
     function BasicControl() {};
 
-    BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing, oDataStore) {
-        console.log('1. init ******************')
 
+    //Step 2 Add Initialize Code
+    BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing, oDataStore) {
+        // Add Link to MapBox Stylesheet
+        jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />");
+
+        // Get Id of Control container
+        var mapContainer = oControlHost.container.id;
+
+        //Add Default map Definition
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZnhoYXdrIiwiYSI6ImNqaDZqYmVsajFwb3kycWs0dzM5aDFxbXgifQ.DcqavEFQJWPJ8eUAGLbK_A'; // Add Map Token Key here
+        map = new mapboxgl.Map({
+            container: mapContainer, // container id
+            style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
+            center: [-74.50, 40], // starting position
+            zoom: 9 // starting zoom
+        });
+
+        //Tell Cognos that we are done initializing 
         fnDoneInitializing();
+
     };
 
 
     BasicControl.prototype.draw = function(oControlHost) {
-        oControlHost.container.innerHTML = "Hello World!!  Map PlaceHolder";
-        console.log('3. Draw ******************')
+
+        console.log('Draw ******************')
 
     };
 
 
     BasicControl.prototype.setData = function(oControlHost, oDataStore) {
 
-        console.log('2. SetData *****************')
+        console.log('SetData *****************')
 
     };
 
 
     return BasicControl;
 });
-
