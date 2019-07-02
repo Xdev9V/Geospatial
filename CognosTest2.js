@@ -37,8 +37,6 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
 
         var oPage = oControlHost.page;
 
-
-
         console.log(geojsonFeature)
 
         map.on("load", function() {
@@ -46,7 +44,6 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
                 "type": "geojson",
                 "data": geojsonFeature
             });
-
 
             map.addLayer({
                 "id": "points",
@@ -70,6 +67,8 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
 
             });
         });
+        
+               
 
         //Zoom and Fit map to points
         geojsonFeature.features.forEach(function(feature) {
@@ -79,7 +78,36 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
         map.fitBounds(bounds, {
             padding: 40
         });
-
+map.on('load', function() {
+    var frameCount = 7;
+    for (var i = 0; i < frameCount; i++) {
+    var revi= frameCount-i;
+    var t = new Date();
+    var d = t.getTime();
+    var newD=d-60*1000*revi*30;
+    var datetext = new Date(newD);
+    var newDiso=datetext.toISOString();
+    var timeBlock = newDiso;
+    map.addLayer({
+        'id': 'Radar-Today',
+        'type': 'raster',
+        'source': {
+        'type': 'raster',
+        'tiles': [
+        'https://nowcoast.noaa.gov/arcgis/services/nowcoast/radar_meteo_imagery_nexrad_time/MapServer/WmsServer?service=WMS&request=GetMap&version=1.3.0&layers=1&styles=&format=image/png&transparent=true&height=256&width=256&crs=EPSG:3857&bbox={bbox-epsg-3857}&time='+timeBlock
+],
+        'tileSize': 256
+         },
+		 'layout': {'visibility': 'visible'},
+        'paint': { 'raster-opacity': 1,
+            'raster-opacity-transition': {
+            duration: 0
+         }}
+     }, 'aeroway-taxiway');
+}
+  
+	
+});
 
 
     };
