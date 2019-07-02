@@ -1,5 +1,6 @@
-define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquery"], function(mapboxgl, jQuery) {
+define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquery"], function(mapboxgl, jQuery) {
     "use strict";
+
     var map = '',
         bounds = '',
         geojsonFeature = {};
@@ -7,22 +8,25 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
     function BasicControl() {};
 
 
-    //Step 2 Add Initialize Code
-    BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing, oDataStore) {
-        // Add Link to MapBox Stylesheet
-        jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />");
+    BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing) {
 
-        // Get Id of Control container
+        jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />");
+
+
         var mapContainer = oControlHost.container.id;
 
-        //Add Default map Definition
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZnhoYXdrIiwiYSI6ImNqaDZqYmVsajFwb3kycWs0dzM5aDFxbXgifQ.DcqavEFQJWPJ8eUAGLbK_A'; // Add Map Token Key here
-        map = new mapboxgl.Map({
-            container: mapContainer, // container id
-            style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
-            center: [-74.50, 40], // starting position
-            zoom: 9 // starting zoom
-        });
+        //*** Step 2a make some minor adjustments to default map */
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZnhoYXdrIiwiYSI6ImNqaDZqYmVsajFwb3kycWs0dzM5aDFxbXgifQ.DcqavEFQJWPJ8eUAGLbK_A';// Map token Key
+            map = new mapboxgl.Map({
+                container: mapContainer,
+                style: 'mapbox://styles/mapbox/streets-v9',
+                center: [-96, 37.8], //Update Map Center to mid US
+                zoom: 3, //Change Default Zoom
+                interactive: true //Set Interactive to true
+            });
+
+        //Set up the Bounds variable
+        bounds = new mapboxgl.LngLatBounds();
 
         //Tell Cognos that we are done initializing 
         fnDoneInitializing();
