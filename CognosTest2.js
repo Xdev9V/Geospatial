@@ -108,7 +108,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
             padding: 40
         });
 
-
+console.log('test')
 
     };
 
