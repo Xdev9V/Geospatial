@@ -1,3 +1,15 @@
+/*
+ Author: 
+ Ed Gonzalez  
+ edgonzalez@icdata.io
+ www.icdata.io 
+ www.linkedin.com/in/ed-gonzalez-9683696
+ 
+	Free for personal and commercial use under the CCA 3.0 license
+	I just ask for you give me credit for the code and tell your friends about it.
+	Note this is a very simple implementation, and is only meant to get you started using Custom Controls, and the MapBox API
+*/
+
 //Step 1 Add reference tp MapBox API, and to jQuery API, then add variables to be used 
 //Step 2 Add Initialize Code and set up default map.
 //Step 2a Make some minor adjustments to default map, and setup Bounds Variable
@@ -6,7 +18,7 @@
 //Step 4 Minor Adjustments to new point map,  Play around with point size, Set Bounds and zoom to new bounds 
 
 
-define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquery"], function(mapboxgl, jQuery) {
+define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquery"], function(mapboxgl, jQuery) {
     "use strict";
     var map = '',
         bounds = '',
@@ -16,7 +28,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
 
     BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing, oDataStore) {
 
-        jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />");
+        jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />");
 
         var mapContainer = oControlHost.container.id;
 
@@ -44,6 +56,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
         console.log('3. Draw ******************')
 
         var oPage = oControlHost.page;
+
 
 
         console.log(geojsonFeature)
@@ -91,36 +104,6 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
 
     };
 
-	map.on('load', function() {
-    var frameCount = 7;
-    for (var i = 0; i < frameCount; i++) {
-    var revi= frameCount-i;
-    var t = new Date();
-    var d = t.getTime();
-    var newD=d-60*1000*revi*30;
-    var datetext = new Date(newD);
-    var newDiso=datetext.toISOString();
-    var timeBlock = newDiso;
-    map.addLayer({
-        'id': 'Radar-Today',
-        'type': 'raster',
-        'source': {
-        'type': 'raster',
-        'tiles': [
-        'https://nowcoast.noaa.gov/arcgis/services/nowcoast/radar_meteo_imagery_nexrad_time/MapServer/WmsServer?service=WMS&request=GetMap&version=1.3.0&layers=1&styles=&format=image/png&transparent=true&height=256&width=256&crs=EPSG:3857&bbox={bbox-epsg-3857}&time='+timeBlock
-],
-        'tileSize': 256
-         },
-		 'layout': {'visibility': 'visible'},
-        'paint': { 'raster-opacity': 1,
-            'raster-opacity-transition': {
-            duration: 0
-         }}
-     }, 'aeroway-taxiway');
-}
-  
-	
-});
 
     BasicControl.prototype.setData = function(oControlHost, oDataStore) {
         console.log('2 Set Data')
@@ -151,3 +134,15 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
 
     return BasicControl;
 });
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
