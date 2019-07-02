@@ -123,42 +123,7 @@ console.log('test')
 
     };
 
-    BasicControl.prototype.draw = function(oControlHost) {
-
-        console.log('3. Draw ******************')
-
-        var oPage = oControlHost.page;
-
-        console.log(geojsonFeature)
-
-        map.on("load", function() {
-            map.addSource("points", {
-                "type": "geojson",
-                "data": geojsonFeature
-            });
-
-            map.addLayer({
-                "id": "points",
-                "type": "circle",
-                "source": "points",
-                "paint": {
-                    'circle-radius': {
-                        'base': 1.75,
-                        'stops': [
-                            [6, 3],
-                            [8, 5],
-                            [10, 7],
-                            [12, 10],
-                            [16, 20]
-                        ]
-
-                    },
-                    "circle-color": "#B42222"
-                },
-                "filter": ["==", "$type", "Point"],
-
-            });
-        });
+   
        map.on('load', function() {
     var frameCount = 7;
     for (var i = 0; i < frameCount; i++) {
@@ -205,30 +170,6 @@ console.log('test')
     };
 
 
-    BasicControl.prototype.setData = function(oControlHost, oDataStore) {
-        console.log('2 Set Data')
-            //Default GeoJSON
-        geojsonFeature = {
-            "type": "FeatureCollection",
-            "features": []
-        }
-
-        var iRowCount = oDataStore.rowCount;
-        for (var iRow = 0; iRow < iRowCount; iRow++) {
-
-            var feature = {}
-            feature['type'] = 'Feature'
-            feature['geometry'] = {
-                'type': 'Point',
-                'coordinates': [parseFloat(oDataStore.getCellValue(iRow, 1)), parseFloat(oDataStore.getCellValue(iRow, 2))],
-            }
-            feature['properties'] = { 'name': oDataStore.getCellValue(iRow, 0) }
-            geojsonFeature['features'].push(feature)
-        }
-
-        console.log(geojsonFeature)
-
-    };
 
 
 
