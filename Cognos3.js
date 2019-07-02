@@ -51,18 +51,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
     };
 
 
-    BasicControl.prototype.draw = function(oControlHost) {
-
-        console.log('Draw ******************')
-
-    };
-
-
-    BasicControl.prototype.setData = function(oControlHost, oDataStore) {
-
-        console.log('SetData *****************')
-
-    };
+   
 
 
     return BasicControl;
