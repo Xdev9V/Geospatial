@@ -6,17 +6,14 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
 
     function BasicControl() {};
 
-
-
     BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing, oDataStore) {
-        console.log('1. init ******************')
-        jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />");
 
+        jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />");
 
         var mapContainer = oControlHost.container.id;
 
         //*** Step 2a make some minor adjustments to default map */
-        mapboxgl.accessToken = ''; //Make sure to add Map Token Key
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZnhoYXdrIiwiYSI6ImNqaDZqYmVsajFwb3kycWs0dzM5aDFxbXgifQ.DcqavEFQJWPJ8eUAGLbK_A'; //Make sure to add Map Token Key
         map = new mapboxgl.Map({
             container: mapContainer,
             style: 'mapbox://styles/mapbox/streets-v9',
@@ -38,6 +35,12 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
 
         console.log('3. Draw ******************')
 
+        var oPage = oControlHost.page;
+
+
+
+        console.log(geojsonFeature)
+
         map.on("load", function() {
             map.addSource("points", {
                 "type": "geojson",
@@ -51,10 +54,13 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
                 "source": "points",
                 "paint": {
                     'circle-radius': {
-                        'base': 3,
+                        'base': 1.75,
                         'stops': [
-                            [10, 3],
-                            [13, 7]
+                            [6, 3],
+                            [8, 5],
+                            [10, 7],
+                            [12, 10],
+                            [16, 20]
                         ]
 
                     },
@@ -63,6 +69,15 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
                 "filter": ["==", "$type", "Point"],
 
             });
+        });
+
+        //Zoom and Fit map to points
+        geojsonFeature.features.forEach(function(feature) {
+            bounds.extend(feature.geometry.coordinates);
+        });
+
+        map.fitBounds(bounds, {
+            padding: 40
         });
 
 
@@ -99,3 +114,4 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
 
     return BasicControl;
 });
+
