@@ -42,10 +42,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
                 interactive: true //Set Interactive to true
             });
 
-        //Set up the Bounds variable
-        bounds = new mapboxgl.LngLatBounds();
-
-        //Tell Cognos that we are done initializing 
+         //Tell Cognos that we are done initializing 
         fnDoneInitializing();
 
     };
