@@ -1,4 +1,4 @@
-define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquery"], function(mapboxgl, jquery) {
+define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquery"], function(mapboxgl, jQuery) {
     "use strict";
     var map = '',
         bounds = '',
@@ -9,15 +9,15 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
 
 
     BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing, oDataStore) {
-
+        console.log('1. init ******************')
         jQuery("head link[rel='stylesheet']").last().after("<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />");
 
 
         var mapContainer = oControlHost.container.id;
 
         //*** Step 2a make some minor adjustments to default map */
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZnhoYXdrIiwiYSI6ImNqaDZqYmVsajFwb3kycWs0dzM5aDFxbXgifQ.DcqavEFQJWPJ8eUAGLbK_A'; //Make sure to add Map Token Key
-        var map = new mapboxgl.Map({
+        mapboxgl.accessToken = ''; //Make sure to add Map Token Key
+        map = new mapboxgl.Map({
             container: mapContainer,
             style: 'mapbox://styles/mapbox/streets-v9',
             center: [-96, 37.8], //Update Map Center to mid US
@@ -36,7 +36,36 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js", "jquer
 
     BasicControl.prototype.draw = function(oControlHost) {
 
-        console.log('Draw ******************')
+        console.log('3. Draw ******************')
+
+        map.on("load", function() {
+            map.addSource("points", {
+                "type": "geojson",
+                "data": geojsonFeature
+            });
+
+
+            map.addLayer({
+                "id": "points",
+                "type": "circle",
+                "source": "points",
+                "paint": {
+                    'circle-radius': {
+                        'base': 3,
+                        'stops': [
+                            [10, 3],
+                            [13, 7]
+                        ]
+
+                    },
+                    "circle-color": "#B42222"
+                },
+                "filter": ["==", "$type", "Point"],
+
+            });
+        });
+
+
 
     };
 
