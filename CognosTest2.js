@@ -67,18 +67,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
 
             });
         });
-        
-               
-
-        //Zoom and Fit map to points
-        geojsonFeature.features.forEach(function(feature) {
-            bounds.extend(feature.geometry.coordinates);
-        });
-
-        map.fitBounds(bounds, {
-            padding: 40
-        });
-map.on('load', function() {
+       map.on('load', function() {
     var frameCount = 7;
     for (var i = 0; i < frameCount; i++) {
     var revi= frameCount-i;
@@ -107,7 +96,18 @@ map.on('load', function() {
 }
   
 	
-});
+}); 
+               
+
+        //Zoom and Fit map to points
+        geojsonFeature.features.forEach(function(feature) {
+            bounds.extend(feature.geometry.coordinates);
+        });
+
+        map.fitBounds(bounds, {
+            padding: 40
+        });
+
 
 
     };
