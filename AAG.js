@@ -187,7 +187,7 @@ map.on('load', function() {
         }
 
         console.log(MapType)
-	    map.setStyle('mapbox://styles/mapbox/' +'streets-v11');
+	    map.setStyle('mapbox://styles/mapbox/streets-v11');
 
     };
 
