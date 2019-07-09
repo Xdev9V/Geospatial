@@ -112,7 +112,7 @@ map.on('load', function() {
 
         console.log(geojsonFeature)
 
-       /* map.on("load", function() {
+       map.on("load", function() {
             map.addSource("points", {
                 "type": "geojson",
                 "data": geojsonFeature
@@ -122,6 +122,7 @@ map.on('load', function() {
             map.addLayer({
                 "id": "points",
                 "type": "circle",
+		"layout": {'visibility': radar}    
                 "source": "points",
                 "paint": {
                     'circle-radius': {
@@ -140,7 +141,7 @@ map.on('load', function() {
                 "filter": ["==", "$type", "Point"],
 
             });
-        }); */
+        }); 
 	
 	// Add geolocate control to the map.
 	var nav = new mapboxgl.GeolocateControl();
