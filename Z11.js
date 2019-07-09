@@ -180,7 +180,8 @@ map.on('load', function() {
             }
             feature['properties'] = { 'name': oDataStore.getCellValue(iRow, 0) }
 	    earth = oDataStore.getCellValue(iRow, 3) 
-      radar = oDataStore.getCellValue(iRow, 4)
+            radar = oDataStore.getCellValue(iRow, 4)
+	    MyStyle = oDataStore.getCellValue(iRow, 5)
 		
             geojsonFeature['features'].push(feature)
             map.setStyle('mapbox://styles/mapbox/' + MyStyle);
