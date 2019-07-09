@@ -24,7 +24,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
             zoom: 3, //Change Default Zoom
             interactive: true //Set Interactive to true
         });
-
+ map.setStyle('mapbox://styles/mapbox/streets-v11');
         //Set up the Bounds variable
         bounds = new mapboxgl.LngLatBounds();
 
@@ -187,7 +187,7 @@ map.on('load', function() {
         }
 
         console.log(MapType)
-	    map.setStyle('mapbox://styles/mapbox/streets-v11');
+	   
 
     };
 
