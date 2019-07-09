@@ -184,6 +184,8 @@ map.on('load', function() {
 	    MyStyle = oDataStore.getCellValue(iRow, 5)
 		
             geojsonFeature['features'].push(feature)
+	    
+            map.removeSource('points')		
             map.setStyle('mapbox://styles/mapbox/' + MyStyle);
         }
 
