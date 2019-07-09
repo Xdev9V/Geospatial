@@ -73,7 +73,7 @@ map.on('load', function () {
  });
 });
 // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on('mouseenter', 'markers2', function () {
+    map.on('mouseenter', 'Earthquakes-last 30days', function () {
         map.getCanvas().style.cursor = 'pointer';
     });	    
 	    
