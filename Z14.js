@@ -112,7 +112,7 @@ map.on('load', function() {
 
         console.log(geojsonFeature)
 
-        map.on("load", function() {
+       /* map.on("load", function() {
             map.addSource("points", {
                 "type": "geojson",
                 "data": geojsonFeature
@@ -140,7 +140,7 @@ map.on('load', function() {
                 "filter": ["==", "$type", "Point"],
 
             });
-        });
+        }); */
 	
 	// Add geolocate control to the map.
 	var nav = new mapboxgl.GeolocateControl();
@@ -185,7 +185,7 @@ map.on('load', function() {
 		
             geojsonFeature['features'].push(feature)
 	    
-            map.removeSource('points')		
+            //map.removeSource('points')		
             map.setStyle('mapbox://styles/mapbox/' + MyStyle);
         }
 
