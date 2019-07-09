@@ -193,11 +193,15 @@ map.on('load', function() {
 
     };
 
-// Create a popup, but don't add it to the map yet.
-var popup = new mapboxgl.Popup({
-closeButton: false,
-closeOnClick: false
-});
+// Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'Earthquakes-last 30days', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'Earthquakes-last 30days', function () {
+        map.getCanvas().style.cursor = '';
+    });
 
     return BasicControl;
 });
