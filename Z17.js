@@ -5,7 +5,8 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js", "jquery
         geojsonFeature = {};
      var earth = 'none';	
      var radar = 'none';
-     var MyStyle = 'light-v9'
+     var MyStyle = 'light-v9';
+     var property = 'none';
 
     function BasicControl() {};
 
@@ -113,7 +114,7 @@ map.on('load', function() {
             map.addLayer({
                 "id": "points",
                 "type": "circle",
-		"layout": {'visibility': radar},    
+		"layout": {'visibility': property},    
                 "source": "points",
                 "paint": {
                     'circle-radius': {
@@ -174,6 +175,7 @@ map.on('load', function() {
 	    earth = oDataStore.getCellValue(iRow, 3) 
             radar = oDataStore.getCellValue(iRow, 4)
 	    MyStyle = oDataStore.getCellValue(iRow, 5)
+	    property = oDataStore.getCellValue(iRow, 6)	
 		
             geojsonFeature['features'].push(feature)
 	    
