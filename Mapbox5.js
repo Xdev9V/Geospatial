@@ -193,11 +193,27 @@ map.on('load', function() {
 
     };
 
-// Create a popup, but don't add it to the map yet.
-var popup = new mapboxgl.Popup({
-closeButton: false,
-closeOnClick: false
-});
+map.on('click', function(e) {
+      
+   
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['Earthquakes-last 30days'] // replace this with the name of the layer
+  });
 
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+ var Day = new Date(feature.properties.time);
+ var Day1 = Day.toUTCString();
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.place + '</h3><p>' + 'Magnitude: ' + feature.properties.mag + '<br>' + 'Date: ' + Day1 + '<br>' + 'source: http://earthquake.usgs.gov/earthquakes' + '</p>')
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+			
+});
     return BasicControl;
 });
