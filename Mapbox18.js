@@ -72,6 +72,11 @@ map.on('load', function () {
  }
  });
 });
+// Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'markers2', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });	    
+	    
 map.on('load', function() {
     var frameCount = 7;
     for (var i = 0; i < frameCount; i++) {
