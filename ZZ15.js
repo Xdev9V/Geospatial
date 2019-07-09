@@ -57,7 +57,7 @@ map.on('load', function () {
  "paint": {
  "circle-color": "#f00", 
  "circle-radius": {
- "property2": "mag",
+ "property": "mag",
  "base": 1.8,
  "stops": [
  [{zoom: 0, value: 2}, 2],
@@ -216,7 +216,7 @@ coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 // Populate the popup and set its coordinates
 // based on the feature found.
 popup.setLngLat(coordinates)
-.setHTML(property2)
+.setHTML(property)
 .addTo(map);
 });
  
