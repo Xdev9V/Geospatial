@@ -19,7 +19,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
         mapboxgl.accessToken = 'pk.eyJ1IjoiZnhoYXdrIiwiYSI6ImNqaDZqYmVsajFwb3kycWs0dzM5aDFxbXgifQ.DcqavEFQJWPJ8eUAGLbK_A'; //Make sure to add Map Token Key
         map = new mapboxgl.Map({
             container: mapContainer,
-            style: 'mapbox://styles/mapbox/light-v10',
+            style: 'mapbox://styles/mapbox/light-v9',
             center: [-96, 37.8], //Update Map Center to mid US
             zoom: 3, //Change Default Zoom
             interactive: true //Set Interactive to true
