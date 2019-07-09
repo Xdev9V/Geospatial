@@ -117,7 +117,7 @@ map.on('load', function() {
             map.addSource("points", {
                 "type": "geojson",
                 "layout": {
-                "visibility": property},
+                "visibility": visible},
                 "data": geojsonFeature
             });
 
