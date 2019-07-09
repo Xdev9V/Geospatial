@@ -193,40 +193,37 @@ map.on('load', function() {
 
     };
 
-/*map.on('click', function(e) {
-      
-   
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['Earthquakes-last 30days'] // replace this with the name of the layer
-  });
-
-  if (!features.length) {
-    return;
-  }
-
-  var feature = features[0];
- var Day = new Date(feature.properties.time);
- var Day1 = Day.toUTCString();
-
-  var popup = new mapboxgl.Popup({ offset: [0, -15] })
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.place + '</h3><p>' + 'Magnitude: ' + feature.properties.mag + '<br>' + 'Date: ' + Day1 + '<br>' + 'source: http://earthquake.usgs.gov/earthquakes' + '</p>')
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-			
+// Create a popup, but don't add it to the map yet.
+var popup = new mapboxgl.Popup({
+closeButton: false,
+closeOnClick: false
 });
-
-// Change the cursor to a pointer when the mouse is over the places layer.
-    map.on('mouseenter', 'Earthquakes-last 30days', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'Earthquakes-last 30days', function () {
-        map.getCanvas().style.cursor = '';
-    });*/
-
-
+ 
+map.on('mouseenter', 'places', function(e) {
+// Change the cursor style as a UI indicator.
+map.getCanvas().style.cursor = 'pointer';
+ 
+var coordinates = e.features[0].geometry.coordinates.slice();
+var description = e.features[0].properties.description;
+ 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+// Populate the popup and set its coordinates
+// based on the feature found.
+popup.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+});
+ 
+map.on('mouseleave', 'places', function() {
+map.getCanvas().style.cursor = '';
+popup.remove();
+});
 
 
     return BasicControl;
