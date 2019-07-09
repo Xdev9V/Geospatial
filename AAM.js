@@ -180,7 +180,8 @@ map.on('load', function() {
             }
             feature['properties'] = { 'name': oDataStore.getCellValue(iRow, 0) }
 	    earth = oDataStore.getCellValue(iRow, 3) 
-      radar = oDataStore.getCellValue(iRow, 4)
+            radar = oDataStore.getCellValue(iRow, 4)
+	    Test = oDataStore.getCellValue(iRow, 4)
 		
             geojsonFeature['features'].push(feature)
         }
