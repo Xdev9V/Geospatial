@@ -193,7 +193,7 @@ map.on('load', function() {
 
     };
 
-map.on('click', function(e) {
+/*map.on('click', function(e) {
       
    
   var features = map.queryRenderedFeatures(e.point, {
@@ -224,7 +224,7 @@ map.on('click', function(e) {
     // Change it back to a pointer when it leaves.
     map.on('mouseleave', 'Earthquakes-last 30days', function () {
         map.getCanvas().style.cursor = '';
-    });
+    });*/
 
 
 
