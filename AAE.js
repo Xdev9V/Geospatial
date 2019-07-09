@@ -186,7 +186,7 @@ map.on('load', function() {
             geojsonFeature['features'].push(feature)
         }
 
-        console.log(earth)
+        console.log(MapType)
 
     };
 
