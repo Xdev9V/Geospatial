@@ -6,6 +6,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
      var earth = 'none';	
      var radar = 'none';
      var MapType = 'dark-v9';
+     var Test = 'streets-v11'	
 
     function BasicControl() {};
 
@@ -181,7 +182,7 @@ map.on('load', function() {
             feature['properties'] = { 'name': oDataStore.getCellValue(iRow, 0) }
 	    earth = oDataStore.getCellValue(iRow, 3) 
             radar = oDataStore.getCellValue(iRow, 4)
-	    Test = oDataStore.getCellValue(iRow, 4)
+	    Test =  oDataStore.getCellValue(iRow, 4)
 		
             geojsonFeature['features'].push(feature)
         }
@@ -189,7 +190,6 @@ map.on('load', function() {
         console.log(earth)
 
     };
-
 
 
 
