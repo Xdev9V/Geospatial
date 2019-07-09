@@ -72,10 +72,16 @@ map.on('load', function () {
  }
  });
 });
+	    
 // Change the cursor to a pointer when the mouse is over the places layer.
     map.on('mouseenter', 'Earthquakes-last 30days', function () {
         map.getCanvas().style.cursor = 'pointer';
-    });	    
+    });	  	    
+	    
+  // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'Earthquakes-last 30days', function () {
+        map.getCanvas().style.cursor = '';
+    });
 	    
 map.on('load', function() {
     var frameCount = 7;
