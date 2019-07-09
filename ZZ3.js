@@ -6,7 +6,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
      var earth = 'none';	
      var radar = 'none';
      var MyStyle = 'light-v9'
-     var property = 'none';
+     var property = 'visible';
 
     function BasicControl() {};
 
