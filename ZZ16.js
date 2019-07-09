@@ -199,7 +199,7 @@ closeButton: false,
 closeOnClick: false
 });
  
-map.on('mouseenter', 'Earthquakes-last 30days', function(e) {
+/*map.on('mouseenter', 'Earthquakes-last 30days', function(e) {
 // Change the cursor style as a UI indicator.
 map.getCanvas().style.cursor = 'pointer';
  
@@ -224,6 +224,7 @@ map.on('mouseleave', 'Earthquakes-last 30days', function() {
 map.getCanvas().style.cursor = '';
 popup.remove();
 });
+*/
 
 
     return BasicControl;
