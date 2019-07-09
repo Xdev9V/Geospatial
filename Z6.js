@@ -5,7 +5,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
         geojsonFeature = {};
      var earth = 'none';	
      var radar = 'none';
-     var MyStyle = 'streets-v11'
+     var MyStyle = 'light-v10'
 
     function BasicControl() {};
 
