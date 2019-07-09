@@ -203,7 +203,7 @@ map.on('mouseenter', 'Earthquakes-last 30days', function(e) {
 // Change the cursor style as a UI indicator.
 map.getCanvas().style.cursor = 'pointer';
  
-var coordinates = e.features[0].geometry.coordinates.slice();
+/*var coordinates = e.features[0].geometry.coordinates.slice();
 var description = e.features[0].properties.description;
  
 // Ensure that if the map is zoomed out such that multiple
@@ -223,7 +223,7 @@ popup.setLngLat(coordinates)
 map.on('mouseleave', 'places', function() {
 map.getCanvas().style.cursor = '';
 popup.remove();
-});
+});*/
 
 
     return BasicControl;
