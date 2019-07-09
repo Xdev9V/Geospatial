@@ -98,15 +98,6 @@ map.on('load', function() {
          }}
      }, 'aeroway-taxiway');
 }
-
-  /*  var frame = frameCount ;
-    setInterval(function() {
-        map.setPaintProperty('wms-test-layer' + frame, 'raster-opacity', 0);
-        frame = (frame + 1) % frameCount;
-        map.setPaintProperty('wms-test-layer' + frame, 'raster-opacity', 1);
- 
-    }, 1000);
-	*/
 	
 });
 
@@ -122,7 +113,7 @@ map.on('load', function() {
             map.addLayer({
                 "id": "points",
                 "type": "circle",
-		"layout": {'visibility': radar}    
+		"layout": {'visibility': radar},    
                 "source": "points",
                 "paint": {
                     'circle-radius': {
