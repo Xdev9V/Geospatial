@@ -5,7 +5,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
         geojsonFeature = {};
      var earth = 'none';	
      var radar = 'none';
-     //var MyStyle = 'light-v10'
+     var MyStyle = 'light-v9'
 
     function BasicControl() {};
 
@@ -19,7 +19,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
         mapboxgl.accessToken = 'pk.eyJ1IjoiZnhoYXdrIiwiYSI6ImNqaDZqYmVsajFwb3kycWs0dzM5aDFxbXgifQ.DcqavEFQJWPJ8eUAGLbK_A'; //Make sure to add Map Token Key
         map = new mapboxgl.Map({
             container: mapContainer,
-            style: 'mapbox://styles/mapbox/light-v9',
+            style: 'mapbox://styles/mapbox/dark-v9',
             center: [-96, 37.8], //Update Map Center to mid US
             zoom: 3, //Change Default Zoom
             interactive: true //Set Interactive to true
@@ -183,7 +183,7 @@ map.on('load', function() {
       radar = oDataStore.getCellValue(iRow, 4)
 		
             geojsonFeature['features'].push(feature)
-           // map.setStyle('mapbox://styles/mapbox/' + MyStyle);
+            map.setStyle('mapbox://styles/mapbox/' + MyStyle);
         }
 
         console.log(earth)
