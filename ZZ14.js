@@ -57,7 +57,7 @@ map.on('load', function () {
  "paint": {
  "circle-color": "#f00", 
  "circle-radius": {
- "property": "mag",
+ "property2": "mag",
  "base": 1.8,
  "stops": [
  [{zoom: 0, value: 2}, 2],
@@ -212,18 +212,18 @@ var description = e.features[0].properties.description;
 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 }
- */
+ 
 // Populate the popup and set its coordinates
 // based on the feature found.
 popup.setLngLat(coordinates)
-.setHTML(description)
+.setHTML(property2)
 .addTo(map);
 });
  
-map.on('mouseleave', 'places', function() {
+map.on('mouseleave', 'Earthquakes-last 30days', function() {
 map.getCanvas().style.cursor = '';
 popup.remove();
-});*/
+});
 
 
     return BasicControl;
