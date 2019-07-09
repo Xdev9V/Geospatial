@@ -33,7 +33,7 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
         fnDoneInitializing();
 
     };
-
+     map.setStyle('mapbox://styles/mapbox/' + Test);
 
     BasicControl.prototype.draw = function(oControlHost) {
 
@@ -182,12 +182,12 @@ map.on('load', function() {
             feature['properties'] = { 'name': oDataStore.getCellValue(iRow, 0) }
 	    earth = oDataStore.getCellValue(iRow, 3) 
             radar = oDataStore.getCellValue(iRow, 4)
-	    Test =  oDataStore.getCellValue(iRow, 4)
+	    Test =  oDataStore.getCellValue(iRow, 5)
 		
             geojsonFeature['features'].push(feature)
         }
 
-        console.log(earth)
+        console.log(Test)
 
     };
 
