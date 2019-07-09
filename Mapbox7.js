@@ -196,7 +196,7 @@ map.on('load', function() {
 map.on('click', function(e) {
       
    
-  var features = map.queryRenderedFeatures(e.point, {
+  var features2 = map.queryRenderedFeatures(e.point, {
     layers: ['Earthquakes-last 30days'] // replace this with the name of the layer
   });
 
