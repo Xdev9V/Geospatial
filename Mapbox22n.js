@@ -246,7 +246,7 @@ map.on('load', function() {
             "source": "torn-9u8vfn",
             "source-layer": "torn-9u8vfn",
             "layout": {
-                "visibility": tornados},
+                "visibility": tornadoes},
             "paint": {
                 "line-color": "hsl(275, 71%, 60%)",
                 "line-opacity": 0.67,
