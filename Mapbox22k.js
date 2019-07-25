@@ -184,6 +184,36 @@ map.on('load', function() {
             },  'layout': {'visibility': hurricane},
         });
     });	    
+
+    map.on('load', function() {
+    var frameCount = 7;
+    for (var i = 0; i < frameCount; i++) {
+    var revi= frameCount-i;
+    var t = new Date();
+    var d = t.getTime();
+    var newD=d-60*1000*revi*30;
+    var datetext = new Date(newD);
+    var newDiso=datetext.toISOString();
+    var timeBlock = newDiso;
+    map.addLayer({
+        'id': 'Lightning-Today',
+        'type': 'raster',
+        'source': {
+        'type': 'raster',
+        'tiles': [
+        'https://nowcoast.noaa.gov/arcgis/services/nowcoast/sat_meteo_emulated_imagery_lightningstrikedensity_goes_time/MapServer/WmsServer?service=WMS&request=GetMap&version=1.3.0&layers=1&styles=&format=image/png&transparent=true&height=256&width=256&crs=EPSG:3857&bbox={bbox-epsg-3857}&time='+timeBlock
+],
+        'layout': {'visibility': lightning},
+        'tileSize': 256
+         },
+		 'layout': {'visibility': 'none'},
+        'paint': { 'raster-opacity': 1,
+            'raster-opacity-transition': {
+            duration: 0
+         }}
+     }, 'aeroway-taxiway');
+}
+	    
 	    
 	    
 	// Add geolocate control to the map.
