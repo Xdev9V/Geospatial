@@ -7,6 +7,10 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
      var radar = 'none';
      var MyStyle = 'light-v9'
      var property = 'visible';
+     var lightning = 'none';
+     var hurricane = 'none';
+     var hazardous = 'none';
+     var earth_h = 'none';	
 
     function BasicControl() {};
 
@@ -35,12 +39,12 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js", "jquer
 
     };
 
-
     BasicControl.prototype.draw = function(oControlHost) {
 
         console.log('3. Draw ******************')
 
         var oPage = oControlHost.page;
+	    
 var url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson';
 map.on('load', function () {
      
@@ -74,8 +78,7 @@ map.on('load', function () {
  });
 });
 
- map.on('click', function(e) {
-      
+ map.on('click', function(e) {   
    
   var features = map.queryRenderedFeatures(e.point, {
     layers: ['Earthquakes-last 30days'] // replace this with the name of the layer
@@ -85,7 +88,7 @@ map.on('load', function () {
     return;
   }
 
-  var feature = features[0];
+ var feature = features[0];
  var Day = new Date(feature.properties.time);
  var Day1 = Day.toUTCString();
 
@@ -133,21 +136,10 @@ map.on('load', function() {
          }}
      }, 'aeroway-taxiway');
 }
-
-  /*  var frame = frameCount ;
-    setInterval(function() {
-        map.setPaintProperty('wms-test-layer' + frame, 'raster-opacity', 0);
-        frame = (frame + 1) % frameCount;
-        map.setPaintProperty('wms-test-layer' + frame, 'raster-opacity', 1);
- 
-    }, 1000);
-	*/
-	
+ 	
 });
 
-        console.log(geojsonFeature)
-
-        map.on("load", function() {
+            map.on("load", function() {
             map.addSource("points", {
                 "type": "geojson",
                 "data": geojsonFeature
@@ -195,8 +187,6 @@ map.on('load', function() {
             padding: 60
         });
 
-
-
     };
 
 
@@ -220,15 +210,19 @@ map.on('load', function() {
             }
             feature['properties'] = { 'name': oDataStore.getCellValue(iRow, 0) }
 	          earth = oDataStore.getCellValue(iRow, 3) 
-            radar = oDataStore.getCellValue(iRow, 4)
+                  radar = oDataStore.getCellValue(iRow, 4)
 	          MyStyle = oDataStore.getCellValue(iRow, 5)
-            property = oDataStore.getCellValue(iRow, 6)
+                  property = oDataStore.getCellValue(iRow, 6)
+		  lightning = oDataStore.getCellValue(iRow, 7)
+		  hurricane = oDataStore.getCellValue(iRow, 8)
+		  hazardous = oDataStore.getCellValue(iRow, 9)
+		  earth_h = oDataStore.getCellValue(iRow, 10)
 		
             geojsonFeature['features'].push(feature)
             map.setStyle('mapbox://styles/mapbox/' + MyStyle);
         }
 
-        console.log(earth)
+        
 
     };
 
