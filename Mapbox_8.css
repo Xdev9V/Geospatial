@@ -1,0 +1,35 @@
+#console {
+  position: absolute;
+  top: 345px;
+        right: 5px;
+  width: 140px;
+  height: 55px;
+  margin: 1px;
+  padding: 1px 1px;
+  ;
+}
+.calculation-box {
+height: 75px;
+width: 150px;
+position: absolute;
+bottom: 70px;
+left: 10px;
+background-color: rgba(255, 255, 255, .9);
+padding: 10px;
+text-align: center;
+}
+.map-overlay {
+height: 75px;
+width: 150px;
+position: absolute;
+bottom: 170px;
+left: 10px;
+background-color: rgba(255, 255, 255, .9);
+padding: 10px;
+text-align: center;
+}
+p {
+font-family: 'Open Sans';
+margin: 0;
+font-size: 13px;
+}	
