@@ -17,8 +17,9 @@ define(["https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js", "jquery
 	 var earthquake_h = 'none';	
 
     function BasicControl() {};
-var ocr = cognos.Report.getReport("_THIS_");
-var ctrl=ocr.prompt.getControlByName("Test2");
+
+	
+
 
     BasicControl.prototype.initialize = function(oControlHost, fnDoneInitializing, oDataStore) {
 
@@ -49,6 +50,9 @@ var ctrl=ocr.prompt.getControlByName("Test2");
         fnDoneInitializing();
 
     };
+	var ocr= cognos.Report.getReport("_THIS_");
+   
+        ctrl=  ocr.prompt.getControlByName('Test2');
 
     BasicControl.prototype.draw = function(oControlHost) {
 
