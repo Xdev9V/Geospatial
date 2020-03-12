@@ -628,7 +628,7 @@ map.on('click', function(e) {
 
  }, "circle-opacity": 0.7
  },
- "filter": ["==", "Date", '3/10/20'],
+ "filter": ["==", "Date", '3/11/20'],
  });
 });
 
