@@ -17,6 +17,7 @@ define(["https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js", "jquery", "ht
     var earthquake_h = 'none';
     var total_paid = 0;
     var wildfire_p = 'none';
+    var test 
 
     function BasicControl() { };
 
